@@ -1,11 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Hidro Solar Proyectos SRL</title>
-</head>
-<body>
-    <h1>Hidro Solar Proyectos SRL</h1>
-    <p>Sitio web en construcción.</p>
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hidro Solar Proyectos SRL. Energía solar y soluciones de agua para los Valles Calchaquíes." />
+    <title>Hidro Solar | Energía que acerca el agua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .solar-film{height:400vh!important}.production-photo{display:block!important;opacity:0}.film-production{display:block!important}.film-progress span:nth-child(3){display:block!important}.impact{display:none!important}
+      .model-house{width:290px!important;height:190px!important;transform:translate(-50%,-50%)!important;animation:model-float-2d 4s ease-in-out infinite!important}.model-wall{inset:72px 20px 0!important;box-shadow:none!important}.model-roof{width:250px!important;height:74px!important;transform:skewX(-28deg)!important;box-shadow:none!important}.model-roof i{transform:skewX(28deg)}.model-line{display:none}.model-sun{animation:model-sun-2d 5s ease-in-out infinite!important}@keyframes model-float-2d{50%{transform:translate(-50%,-54%)}}@keyframes model-sun-2d{50%{transform:translate(-20px,10px);box-shadow:0 0 0 18px rgba(245,199,69,.12),0 0 48px rgba(242,185,48,.9)}}
+  .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:1240px;margin:0 auto}.project-grid img{height:520px!important}.projects-head{max-width:1240px;margin-left:auto;margin-right:auto}@media(max-width:700px){.project-grid{grid-template-columns:1fr!important}.project-grid img{height:74vw!important}}
+  .homes{grid-template-columns:.85fr 1.15fr!important;gap:5vw!important}.model-card{isolation:isolate;background:#f7f5ef!important;min-height:0!important;height:auto!important;aspect-ratio:3/2;padding:0!important;overflow:hidden!important}.model-card::before{content:"";position:absolute;inset:0;z-index:2;background:url('assets/maqueta-casa-solar.png') center center/cover no-repeat;animation:maqueta-respirar 9s cubic-bezier(.4,0,.2,1) infinite alternate}.model-card::after{content:""!important;display:block!important;position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.16),transparent 40%);animation:maqueta-luz 6s ease-in-out infinite}.model-card>*{display:none!important}.energy-line{display:none!important}@keyframes maqueta-respirar{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.025) translate3d(-.5%,-.35%,0)}}@keyframes maqueta-luz{0%,100%{opacity:.2}50%{opacity:.7}}@media(max-width:700px){.homes{grid-template-columns:1fr!important;gap:48px!important}.model-card{aspect-ratio:3/2!important;min-height:0!important}}
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#inicio" aria-label="Hidro Solar, inicio"><span class="brand-mark">H</span><span>HIDRO<span>SOLAR</span></span></a>
+      <nav><a href="#proceso">Soluciones</a><a href="#hogares">Hogares</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav>
+      <a class="nav-cta" href="tel:+543838497748">Llamar ahora <span>↗</span></a>
+    </header>
+
+    <main id="inicio">
+      <section class="solar-film" aria-label="Del sol al agua">
+        <div class="film-sticky"><div class="film-photo solar-photo"></div><div class="film-photo water-photo"></div><div class="film-photo production-photo"></div><div class="film-shadow"></div><div class="moving-sun"><span></span></div><svg class="energy-line" viewBox="0 0 1200 700" preserveAspectRatio="none"><path d="M850 110 C790 230 760 355 650 420 S500 530 360 605" /></svg><div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLES CALCHAQUÍES · ARGENTINA</p><h1>Del sol a<br /><em>cada gota.</em></h1><p>Deslizá y mirá cómo transformamos un recurso natural en agua para tu proyecto.</p></div><div class="film-copy film-energy"><p class="eyebrow"><i></i> 01 · CAPTURAMOS EL SOL</p><h2>La energía<br /><em>empieza acá.</em></h2><p>Los paneles reciben la luz y la convierten en potencia limpia para cada instalación.</p></div><div class="film-copy film-water"><p class="eyebrow"><i></i> 02 · LLEVAMOS EL AGUA</p><h2>Y el agua<br /><em>se pone en marcha.</em></h2><p>La energía solar activa el sistema de bombeo para que el agua llegue donde importa.</p></div><div class="film-copy film-production"><p class="eyebrow"><i></i> 03 · IMPULSAMOS PRODUCCIÓN</p><h2>El agua se vuelve<br /><em>fruto.</em></h2><p>Una instalación solar bien diseñada sostiene el riego y acompaña el crecimiento de cada cultivo.</p><a class="button" href="#contacto">Hablemos de tu proyecto <span>↓</span></a></div><div class="film-progress"><span class="active"></span><span></span><span></span><b>DESLIZÁ</b></div></div>
+      </section>
+
+      <section class="story" id="proceso">
+        <div class="section-label">NUESTRO PROPÓSITO <span>01</span></div>
+        <div class="story-heading"><p class="eyebrow dark"><i></i> ENERGÍA QUE SE TRANSFORMA</p><h2>La naturaleza nos da<br />la fuerza. Nosotros le<br /><em>damos dirección.</em></h2></div>
+        <div class="flow">
+          <article class="flow-item"><div class="flow-number">01</div><div class="icon sun-icon">☼</div><h3>Sol</h3><p>Captamos el recurso más abundante de nuestros valles.</p></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-item"><div class="flow-number">02</div><div class="icon bolt-icon">ϟ</div><h3>Energía</h3><p>La convertimos en energía limpia, confiable y autónoma.</p></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-item water"><div class="flow-number">03</div><div class="icon water-icon">◒</div><h3>Agua</h3><p>La llevamos donde hace falta: producción, hogares y comunidad.</p></article>
+        </div>
+      </section>
+
+      <section class="impact">
+        <div class="impact-copy"><p class="eyebrow dark"><i></i> EL RESULTADO</p><h2>Más agua.<br /><em>Más futuro.</em></h2><p>Una solución bien pensada transforma la energía del sol en crecimiento para cada proyecto.</p></div>
+        <div class="impact-image" role="img" aria-label="Riego productivo en los Valles Calchaquíes con energía solar"></div>
+      </section>
+
+      <section class="projects"><div class="projects-head"><p class="eyebrow dark"><i></i> PROYECTOS REALIZADOS</p><h2>Obras que hablan<br />por nuestro trabajo.</h2></div><div class="project-grid"><figure><img src="assets/instalacion-pozo-betun.jpeg" alt="Instalación solar rural en Pozo Betún" /><figcaption>Pozo Betún · Sistema solar rural</figcaption></figure><figure><img src="assets/proyecto-paneles-02.jpeg" alt="Arreglo de paneles solares instalado" /><figcaption>Obra terminada · Energía para bombeo</figcaption></figure></div></section>
+
+      <section class="homes" id="hogares">
+        <div class="homes-copy"><p class="eyebrow dark"><i></i> ENERGÍA PARA TU HOGAR</p><h2>Que el sol también<br /><em>trabaje para vos.</em></h2><p>Instalamos sistemas solares residenciales a medida para reducir tu dependencia de la red y acompañar el consumo de tu casa con energía limpia.</p><div class="home-points"><span><b>01</b> Evaluamos tu consumo</span><span><b>02</b> Diseñamos tu sistema</span><span><b>03</b> Instalamos y acompañamos</span></div><a class="home-link" href="#contacto">Pedí tu evaluación personalizada <span>↗</span></a></div>
+        <div class="homes-card model-card" aria-label="Maqueta arquitectónica de casa con paneles solares"><div class="model-sun"></div><div class="model-house"><div class="model-roof"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="model-wall"><span class="model-door"></span><span class="model-window one"></span><span class="model-window two"></span></div></div><div class="model-line line-one"></div><div class="model-line line-two"></div><p>MODELO RESIDENCIAL</p><strong>Tu casa.<br />Tu energía.</strong></div>
+      </section>
+
+      <section class="statement" id="nosotros">
+        <div class="statement-art"><div class="panel-grid"></div><div class="statement-sun"></div></div>
+        <div class="statement-copy"><p class="eyebrow"><i></i> QUIÉNES SOMOS</p><h2>Nacimos en<br />esta tierra.</h2><p>Hidro Solar Proyectos SRL es una empresa nacida en los Valles Calchaquíes. Nuestro conocimiento del territorio, sus desafíos y su gente nos permitió consolidarnos como referentes en soluciones de energía sustentable.</p><p>Creamos proyectos a medida para que el agua llegue más lejos, usando una energía que no se agota.</p><div class="signature"><span>HSP</span><small>PROYECTOS CON RAÍZ LOCAL</small></div></div>
+      </section>
+
+      <section class="contact" id="contacto">
+        <div><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><em>el agua llegue.</em></h2></div>
+        <div class="contact-details"><a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a><p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p><a class="whatsapp" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a></div>
+      </section>
+    </main>
+    <footer><a class="brand" href="#inicio"><span class="brand-mark">H</span><span>HIDRO<span>SOLAR</span></span></a><span>© 2026 HIDRO SOLAR PROYECTOS SRL</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
+    <script src="script.js"></script>
+  </body>
 </html>
