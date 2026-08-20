@@ -20,12 +20,12 @@ function animateFilm() {
   sun.style.transform = `translate(${-progress * 28 - finalStage * 46}vw, ${progress * 76 - finalStage * 104}vh) scale(${1 - progress * .3 + finalStage * .13})`;
   energy.style.opacity = progress > .22 && progress < .68 ? Math.sin((progress - .22) / .46 * Math.PI) : 0;
   copies.forEach((copy, index) => {
-    const ranges = [[0,.18],[.13,.31],[.26,.82],[.76,1]][index];
+    const ranges = [[0,.15],[.19,.33],[.37,1],[2,3]][index];
     const visible = progress >= ranges[0] && progress <= ranges[1];
     copy.style.opacity = visible ? 1 : 0;
     copy.style.transform = visible ? 'translateY(0)' : 'translateY(22px)';
   });
-  const active = progress < .30 ? 0 : progress < .80 ? 1 : 2;
+  const active = progress < .19 ? 0 : progress < .37 ? 1 : 2;
   steps.forEach((step, index) => step.classList.toggle('active', index <= active));
 }
 
