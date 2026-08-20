@@ -32,3 +32,18 @@ function animateFilm() {
 addEventListener('scroll', animateFilm, { passive: true });
 addEventListener('resize', animateFilm);
 animateFilm();
+
+const navEl = document.querySelector('.nav');
+const navToggle = document.querySelector('.nav-toggle');
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    const open = navEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.nav nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      navEl.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
