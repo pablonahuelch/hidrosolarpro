@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hidro Solar Proyectos SRL. Energía solar y soluciones de agua para los Valles Calchaquíes." />
+    <title>Hidro Solar | Energía que acerca el agua</title>
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#inicio" aria-label="Hidro Solar Proyectos SRL, inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /></a>
+      <nav><a href="#proceso">Soluciones</a><a href="#hogares">Hogares</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav>
+      <div class="nav-right">
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+        <a class="nav-cta" href="tel:+543838497748">Llamar ahora <span>↗</span></a>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="solar-film" aria-label="Del sol al agua">
+        <div class="film-sticky"><canvas id="sequenceCanvas" class="sequence-canvas"></canvas><div class="film-shadow"></div><div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLES CALCHAQUÍES</p><h1>Del sol a<br /><em>cada gota.</em></h1><p>Deslizá.</p></div><div class="film-copy film-final"><p class="eyebrow"><i></i> DE LA ENERGÍA AL AGUA</p><h2>Así llega<br /><em>a cada campo.</em></h2><p>La energía solar se convierte en el impulso que hace brotar el agua donde hace falta.</p><a class="button" href="#contacto">Hablemos de tu proyecto <span>↓</span></a></div><div class="film-progress"><span class="active"></span><span></span><b>DESLIZÁ</b></div><button type="button" class="film-skip">Saltar intro <span>↓</span></button></div>
+      </section>
+
+      <section class="story" id="proceso">
+        <div class="section-label">NUESTRO PROPÓSITO <span>01</span></div>
+        <div class="story-heading"><p class="eyebrow dark"><i></i> ENERGÍA QUE SE TRANSFORMA</p><h2>La naturaleza nos da<br />la fuerza. Nosotros le<br /><em>damos dirección.</em></h2></div>
+        <div class="flow">
+          <article class="flow-item"><div class="flow-number">01</div><h3>Sol</h3><p>El recurso más abundante de nuestros valles.</p></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-item"><div class="flow-number">02</div><h3>Energía</h3><p>Limpia, confiable y autónoma.</p></article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-item water"><div class="flow-number">03</div><h3>Agua</h3><p>Donde hace falta: producción, hogares, comunidad.</p></article>
+        </div>
+      </section>
+
+      <section class="impact">
+        <div class="impact-copy"><p class="eyebrow dark"><i></i> EL RESULTADO</p><h2>Más agua.<br /><em>Más futuro.</em></h2><p>Una solución bien pensada transforma la energía del sol en crecimiento para cada proyecto.</p></div>
+        <div class="impact-image" role="img" aria-label="Riego productivo en los Valles Calchaquíes con energía solar"></div>
+      </section>
+
+      <section class="projects"><div class="projects-head"><p class="eyebrow dark"><i></i> PROYECTOS REALIZADOS</p><h2>Obras que hablan<br />por nuestro trabajo.</h2></div><div class="project-grid"><figure><img src="assets/instalacion-pozo-betun.webp" alt="Instalación solar rural en Pozo Betún" /><figcaption>Pozo Betún · Sistema solar rural</figcaption></figure><figure><img src="assets/proyecto-paneles-02.webp" alt="Arreglo de paneles solares instalado" /><figcaption>Obra terminada · Energía para bombeo</figcaption></figure></div></section>
+
+      <section class="homes" id="hogares">
+        <div class="homes-copy"><p class="eyebrow dark"><i></i> ENERGÍA PARA HOGARES Y LOCALES</p><h2>Que el sol también<br /><em>trabaje para vos.</em></h2><p>Instalamos sistemas solares residenciales y comerciales a medida para reducir tu dependencia de la red y acompañar el consumo de tu casa o tu negocio con energía limpia.</p><div class="home-points"><span><b>01</b> Evaluamos tu consumo</span><span><b>02</b> Diseñamos tu sistema</span><span><b>03</b> Instalamos y acompañamos</span></div><a class="home-link" href="#contacto">Pedí tu evaluación personalizada <span>↗</span></a></div>
+        <div class="homes-card model-card" aria-label="Modelo 3D interactivo de vivienda con paneles solares"><div id="model3d" class="model-3d"></div><p class="model-hint">ARRASTRÁ PARA GIRAR</p><p>MODELO RESIDENCIAL Y COMERCIAL</p><strong>Tu hogar.<br />Tu negocio.</strong></div>
+      </section>
+
+      <section class="statement" id="nosotros">
+        <div class="statement-art"><div class="panel-grid"></div><div class="statement-sun"></div></div>
+        <div class="statement-copy"><p class="eyebrow"><i></i> QUIÉNES SOMOS</p><h2>Nacimos en<br />esta tierra.</h2><p>Hidro Solar Proyectos SRL es una empresa nacida en los Valles Calchaquíes. Nuestro conocimiento del territorio, sus desafíos y su gente nos permitió consolidarnos como referentes en soluciones de energía sustentable.</p><p>Creamos proyectos a medida para que el agua llegue más lejos, usando una energía que no se agota.</p><div class="signature"><span><i class="hsp-h">H</i><i class="hsp-s">S</i><i class="hsp-p">P</i></span><small>PROYECTOS CON RAÍZ LOCAL</small></div></div>
+      </section>
+
+      <section class="contact" id="contacto">
+        <div><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><em>el agua llegue.</em></h2></div>
+        <div class="contact-details"><a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a><p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p><a class="whatsapp" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a></div>
+      </section>
+    </main>
+    <footer><a class="brand" href="#inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /></a><span>© 2026 <b class="hsp-h">HIDRO</b> <b class="hsp-s">SOLAR</b> <b class="hsp-p">PROYECTOS</b> SRL</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
+    <script src="model-3d.bundle.js"></script>
+    <script src="smooth-scroll.bundle.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
