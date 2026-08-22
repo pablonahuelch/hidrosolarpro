@@ -40,10 +40,31 @@ if (film && canvas) {
     const cw = innerWidth, ch = innerHeight;
     const ir = img.naturalWidth / img.naturalHeight;
     const cr = cw / ch;
+    ctx.clearRect(0, 0, cw, ch);
+
+    // Los frames son horizontales (16:9). En pantallas angostas y altas
+    // (celulares) "cover" recorta demasiado, así que ahí mostramos el
+    // frame completo (contain) sobre un fondo del mismo frame, cubierto
+    // y difuminado, en vez de barras negras.
+    if (cr < 0.85) {
+      let bw, bh, bx, by;
+      if (ir > cr) { bh = ch; bw = ch * ir; bx = (cw - bw) / 2; by = 0; }
+      else { bw = cw; bh = cw / ir; bx = 0; by = (ch - bh) / 2; }
+      ctx.save();
+      ctx.filter = 'blur(24px) brightness(.55) saturate(1.15)';
+      ctx.drawImage(img, bx, by, bw, bh);
+      ctx.restore();
+
+      let dw, dh, dx, dy;
+      if (ir > cr) { dw = cw; dh = cw / ir; dx = 0; dy = (ch - dh) / 2; }
+      else { dh = ch; dw = ch * ir; dx = (cw - dw) / 2; dy = 0; }
+      ctx.drawImage(img, dx, dy, dw, dh);
+      return;
+    }
+
     let dw, dh, dx, dy;
     if (ir > cr) { dh = ch; dw = ch * ir; dx = (cw - dw) / 2; dy = 0; }
     else { dw = cw; dh = cw / ir; dx = 0; dy = (ch - dh) / 2; }
-    ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(img, dx, dy, dw, dh);
   }
 
