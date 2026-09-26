@@ -6,9 +6,9 @@ const steps = [...document.querySelectorAll('.film-progress span')];
 const skipBtn = document.querySelector('.film-skip');
 
 const FRAME_START = 1;
-const FRAME_END = 192;
+const FRAME_END = 160;
 const FRAME_COUNT = FRAME_END - FRAME_START + 1;
-const PLAY_DURATION = 6800; // ms que tarda la cinemática completa (0 → 1)
+const PLAY_DURATION = 5700; // ms que tarda la cinemática completa (0 → 1)
 
 if (film && canvas) {
   const ctx = canvas.getContext('2d');
