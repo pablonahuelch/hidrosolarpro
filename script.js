@@ -452,3 +452,38 @@ if (zoneFrame) {
   zoneFrame.querySelector('.zone-reset').addEventListener('click', resetZone);
   addEventListener('resize', () => { if (activeBtn) focusOn(activeBtn); });
 }
+
+// ---------- Trayectoria: cifras que cuentan y línea de tiempo ----------
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    countObserver.unobserve(entry.target);
+    const el = entry.target;
+    const end = +el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    const t0 = performance.now();
+    const DUR = 1600;
+    (function tick(now) {
+      const t = Math.min(1, (now - t0) / DUR);
+      el.innerHTML = Math.round(end * (1 - Math.pow(1 - t, 3))) + (suffix ? `<small>${suffix}</small>` : '');
+      if (t < 1) requestAnimationFrame(tick);
+    })(t0);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
+
+const yearsEl = document.querySelector('.years');
+if (yearsEl) {
+  const bar = document.querySelector('.timeline-bar');
+  const updateBar = () => {
+    const max = yearsEl.scrollWidth - yearsEl.clientWidth;
+    const p = max > 0 ? (yearsEl.scrollLeft + yearsEl.clientWidth) / yearsEl.scrollWidth : 1;
+    bar.style.setProperty('--tp', p.toFixed(3));
+  };
+  const step = () => yearsEl.querySelector('.year').offsetWidth + 16;
+  document.querySelector('.tl-prev').addEventListener('click', () => yearsEl.scrollBy({ left: -step(), behavior: 'smooth' }));
+  document.querySelector('.tl-next').addEventListener('click', () => yearsEl.scrollBy({ left: step(), behavior: 'smooth' }));
+  yearsEl.addEventListener('scroll', updateBar, { passive: true });
+  addEventListener('resize', updateBar);
+  updateBar();
+}
