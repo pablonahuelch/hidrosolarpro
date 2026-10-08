@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="styles.css?v=8" />
   </head>
   <body>
     <header class="nav">
@@ -23,6 +23,7 @@
         <a href="#nosotros">Nosotros</a>
       </nav>
       <div class="nav-right">
+        <a class="nav-home" href="#hogares"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10" /></svg>Para tu hogar</a>
         <a class="nav-cta" href="#contacto">Pedir presupuesto <span>→</span></a>
         <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
       </div>
@@ -34,7 +35,7 @@
         <div class="film-sticky">
           <canvas id="sequenceCanvas" class="sequence-canvas"></canvas>
           <div class="film-shadow"></div>
-          <div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLE DEL YOKAVIL</p><h1>Del sol a<br /><span class="grad">cada gota.</span></h1><p>Perforamos, bombeamos y energizamos. Deslizá para ver cómo.</p></div>
+          <div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLE DEL YOKAVIL</p><h1>Del sol a<br /><span class="grad">cada gota.</span></h1><p>Perforamos, bombeamos y energizamos. Deslizá para ver cómo.</p><a class="home-pill" href="#hogares"><span class="sun"></span>¿Querés paneles en tu casa y ahorrar en la luz? <b>Ver hogares →</b></a></div>
           <div class="film-copy film-final"><p class="eyebrow"><i></i> DE LA ENERGÍA AL AGUA</p><h2>Así llega<br /><span class="grad">a cada campo.</span></h2><p>La energía solar se convierte en el impulso que hace brotar el agua donde hace falta.</p><div class="film-actions"><a class="button" href="#equipos">Ver equipos <span>↓</span></a><a class="button ghost" href="#contacto">Hablemos</a></div></div>
           <div class="film-progress"><span class="active"></span><span></span><b>DESLIZÁ</b></div>
           <button type="button" class="film-skip">Saltar intro <span>↓</span></button>
@@ -101,7 +102,6 @@
           </ol>
 
           <div class="showcase-stage" aria-live="polite">
-            <div class="stage-ring" aria-hidden="true"></div>
             <div class="stage-scan" aria-hidden="true"></div>
             <img class="stage-img" src="assets/equipo-perforadora-camion.webp" alt="Perforadora de pozos montada sobre camión de tres ejes" />
             <div class="stage-floor" aria-hidden="true"></div>
@@ -159,10 +159,16 @@
           <p class="eyebrow dark"><i></i> PROYECTOS REALIZADOS <span class="index">04</span></p>
           <h2>Obras que hablan<br /><span class="grad">por nuestro trabajo.</span></h2>
         </div>
-        <div class="project-grid">
-          <figure class="reveal"><div class="frame"><img src="assets/instalacion-pozo-betun.webp" alt="Instalación solar rural en Pozo Betún" loading="lazy" /></div><figcaption><span>Pozo Betún</span>Sistema solar rural</figcaption></figure>
-          <figure class="reveal" style="--d:1"><div class="frame"><img src="assets/proyecto-paneles-02.webp" alt="Arreglo de paneles solares instalado" loading="lazy" /></div><figcaption><span>Obra terminada</span>Energía para bombeo</figcaption></figure>
-        </div>
+        <article class="case reveal">
+          <figure class="case-photo"><div class="frame"><img src="assets/instalacion-pozo-betun.webp" alt="Paneles solares instalados en Pozo Betún" loading="lazy" /></div></figure>
+          <div class="case-copy">
+            <p class="case-kicker">Obra destacada</p>
+            <h3>Pozo Betún</h3>
+            <p>Sistema solar rural para bombear agua lejos de la red eléctrica. Los paneles alimentan la bomba durante el día, sin combustible y sin costos de energía.</p>
+            <ul class="case-tags"><li>Bombeo solar</li><li>Zona rural</li><li>Sin combustible</li></ul>
+            <a class="text-link" href="#contacto">Quiero un proyecto así <span>→</span></a>
+          </div>
+        </article>
       </section>
 
       <!-- Zona de operación: Valle del Yokavil -->
@@ -174,18 +180,21 @@
         </div>
 
         <figure class="zone-map reveal">
-          <a class="zone-frame" href="assets/zona-operacion.webp" target="_blank" rel="noopener"><img src="assets/zona-operacion.webp" alt="Mapa satelital de la zona de operación de Hidro Solar en el Valle del Yokavil, de Santa María a Cafayate por la Ruta 40" loading="lazy" /></a>
-          <figcaption>Ruta Nacional 40 · Santa María — Cafayate · Tocá el mapa para verlo completo</figcaption>
+          <div class="zone-frame"><div class="zone-zoom"><img src="assets/zona-operacion.webp" alt="Mapa satelital de la zona de operación de Hidro Solar en el Valle del Yokavil, de Santa María a Cafayate por la Ruta 40" loading="lazy" />
+            <span class="zone-focus" aria-hidden="true"></span>
+          </div>
+          <button type="button" class="zone-reset">Ver todo el valle</button></div>
+          <figcaption>Tocá una localidad para ubicarla en el mapa · <a href="assets/zona-operacion.webp" target="_blank" rel="noopener">Ver mapa completo</a></figcaption>
         </figure>
 
         <ol class="zone-towns">
-          <li class="main reveal"><b>01</b><span>Santa María</span><small>Catamarca</small></li>
-          <li class="reveal" style="--d:1"><b>02</b><span>Amaicha del Valle</span><small>Tucumán</small></li>
-          <li class="reveal" style="--d:2"><b>03</b><span>El Bañado</span><small>Tucumán</small></li>
-          <li class="reveal" style="--d:3"><b>04</b><span>Colalao del Valle</span><small>Tucumán</small></li>
-          <li class="reveal" style="--d:4"><b>05</b><span>Tolombón</span><small>Salta</small></li>
-          <li class="reveal" style="--d:5"><b>06</b><span>Animaná</span><small>Salta</small></li>
-          <li class="main reveal" style="--d:6"><b>07</b><span>Cafayate</span><small>Salta</small></li>
+          <li class="reveal main" style="--d:0"><button type="button" data-x="45.96" data-y="85.84" aria-pressed="false"><b>01</b><span>Santa María</span><small>Catamarca</small></button></li>
+          <li class="reveal" style="--d:1"><button type="button" data-x="48.31" data-y="69.24" aria-pressed="false"><b>02</b><span>Amaicha del Valle</span><small>Tucumán</small></button></li>
+          <li class="reveal" style="--d:2"><button type="button" data-x="49.80" data-y="57.71" aria-pressed="false"><b>03</b><span>El Bañado</span><small>Tucumán</small></button></li>
+          <li class="reveal" style="--d:3"><button type="button" data-x="49.80" data-y="47.07" aria-pressed="false"><b>04</b><span>Colalao del Valle</span><small>Tucumán</small></button></li>
+          <li class="reveal" style="--d:4"><button type="button" data-x="47.85" data-y="31.25" aria-pressed="false"><b>05</b><span>Tolombón</span><small>Salta</small></button></li>
+          <li class="reveal" style="--d:5"><button type="button" data-x="50.78" data-y="21.78" aria-pressed="false"><b>06</b><span>Animaná</span><small>Salta</small></button></li>
+          <li class="reveal main" style="--d:6"><button type="button" data-x="52.93" data-y="12.79" aria-pressed="false"><b>07</b><span>Cafayate</span><small>Salta</small></button></li>
         </ol>
       </section>
 
@@ -194,7 +203,7 @@
         <div class="homes-copy reveal">
           <p class="eyebrow dark"><i></i> ENERGÍA PARA HOGARES Y LOCALES</p>
           <h2>Que el sol también<br /><span class="grad">trabaje para vos.</span></h2>
-          <p>Instalamos sistemas solares residenciales y comerciales a medida para reducir tu dependencia de la red y acompañar el consumo de tu casa o tu negocio con energía limpia.</p>
+          <p>Instalamos paneles solares en casas y comercios, a la medida de tu consumo, para que ahorres en la factura de luz y dependas menos de la red. Sin perforaciones ni obras grandes: un sistema simple, en tu techo o tu patio.</p>
           <div class="home-points"><span><b>01</b> Evaluamos tu consumo</span><span><b>02</b> Diseñamos tu sistema</span><span><b>03</b> Instalamos y acompañamos</span></div>
           <a class="text-link" href="#contacto">Pedí tu evaluación personalizada <span>→</span></a>
         </div>
@@ -233,6 +242,6 @@
     <a class="wa-float" href="https://wa.me/543838497748" target="_blank" rel="noreferrer" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.4z"/></svg></a>
 
     <script src="smooth-scroll.bundle.js"></script>
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=8"></script>
   </body>
 </html>
