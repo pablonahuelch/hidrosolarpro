@@ -10,6 +10,14 @@ const FRAME_END = 160;
 const FRAME_COUNT = FRAME_END - FRAME_START + 1;
 const PLAY_DURATION = 5700; // ms que tarda la cinemática completa (0 → 1)
 
+// Al recargar, el navegador restauraba el scroll a mitad de página y la intro
+// bloqueaba la pantalla igual. Siempre arrancamos arriba, salvo que se entre
+// con un ancla (#contacto, etc.): en ese caso la intro se da por vista.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+let skipIntro = false;
+try { skipIntro = !!location.hash && !!document.querySelector(location.hash); } catch (e) { /* ancla inválida */ }
+if (!skipIntro) scrollTo(0, 0);
+
 if (film && canvas) {
   const ctx = canvas.getContext('2d');
   const images = new Array(FRAME_COUNT);
@@ -19,7 +27,7 @@ if (film && canvas) {
     const img = new Image();
     const n = String(FRAME_START + i).padStart(3, '0');
     img.src = `assets/ezgif-frame-${n}.webp`;
-    if (i === 0) img.onload = () => { ready = true; drawFrame(0); lockScroll(); };
+    if (i === 0) img.onload = () => { ready = true; render(); if (!skipIntro && scrollY < 40) lockScroll(); };
     images[i] = img;
   }
 
@@ -158,7 +166,7 @@ if (film && canvas) {
   }
 
   function tryPlay() {
-    if (!ready || playing || progress >= 1) return false;
+    if (!ready || playing || progress >= 1 || !locked) return false;
     startPlay();
     return true;
   }
@@ -189,6 +197,7 @@ if (film && canvas) {
   addEventListener('resize', () => { resizeCanvas(); render(); });
   skipBtn?.addEventListener('click', advance);
 
+  if (skipIntro) progress = 1;
   resizeCanvas();
   render();
 }
@@ -395,3 +404,51 @@ function onScroll() {
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 onScroll();
+
+// ---------- Zona de operación: tocar una localidad la ubica en el mapa ----------
+const zoneFrame = document.querySelector('.zone-frame');
+if (zoneFrame) {
+  const zoom = zoneFrame.querySelector('.zone-zoom');
+  const focus = zoneFrame.querySelector('.zone-focus');
+  const townBtns = [...document.querySelectorAll('.zone-towns button')];
+  const SCALE = 2.2;
+  let activeBtn = null;
+
+  function focusOn(btn) {
+    const fx = +btn.dataset.x / 100;
+    const fy = +btn.dataset.y / 100;
+    const w = zoneFrame.clientWidth;
+    const h = zoneFrame.clientHeight;
+    // Centra el punto y evita que se vean bordes vacíos al acercar.
+    const tx = Math.min(0, Math.max(w - w * SCALE, w / 2 - fx * w * SCALE));
+    const ty = Math.min(0, Math.max(h - h * SCALE, h / 2 - fy * h * SCALE));
+    zoom.style.transform = `translate(${tx}px, ${ty}px) scale(${SCALE})`;
+    zoom.style.setProperty('--s', SCALE);
+    focus.style.setProperty('--fx', `${fx * 100}%`);
+    focus.style.setProperty('--fy', `${fy * 100}%`);
+    zoneFrame.classList.add('focused');
+  }
+
+  function resetZone() {
+    zoom.style.transform = '';
+    zoom.style.setProperty('--s', 1);
+    zoneFrame.classList.remove('focused');
+    townBtns.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    activeBtn = null;
+  }
+
+  townBtns.forEach((btn) => btn.addEventListener('click', () => {
+    if (activeBtn === btn) { resetZone(); return; }
+    townBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    activeBtn = btn;
+    focusOn(btn);
+    // En celulares las tarjetas quedan debajo del mapa: lo traemos a la vista.
+    const r = zoneFrame.getBoundingClientRect();
+    if (r.top < 60 || r.bottom > innerHeight) {
+      const y = scrollY + r.top - Math.max(70, (innerHeight - r.height) / 2);
+      if (window.lenis) window.lenis.scrollTo(y); else scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }));
+  zoneFrame.querySelector('.zone-reset').addEventListener('click', resetZone);
+  addEventListener('resize', () => { if (activeBtn) focusOn(activeBtn); });
+}
