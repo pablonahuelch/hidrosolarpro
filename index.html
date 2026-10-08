@@ -3,60 +3,211 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Hidro Solar Proyectos SRL. Energía solar y soluciones de agua para los Valles Calchaquíes." />
-    <title>Hidro Solar | Energía que acerca el agua</title>
+    <meta name="description" content="Hidro Solar Proyectos SRL. Perforación de pozos, bombeo solar y energía renovable para los Valles Calchaquíes." />
+    <title>Hidro Solar | Perforación, bombeo y energía solar</title>
     <link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=3" />
-    <style>.energy-line{display:none!important}</style>
+    <link rel="stylesheet" href="styles.css?v=5" />
   </head>
   <body>
     <header class="nav">
-      <a class="brand" href="#inicio" aria-label="Hidro Solar Proyectos SRL, inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /></a>
-      <nav><a href="#proceso">Soluciones</a><a href="#hogares">Hogares</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav>
+      <a class="brand" href="#inicio" aria-label="Hidro Solar Proyectos SRL, inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /><span class="brand-name"><b class="hsp-h">HIDRO</b> <b class="hsp-s">SOLAR</b> <b class="hsp-p">PROYECTOS</b></span></a>
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#equipos">Equipos</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#nosotros">Nosotros</a>
+      </nav>
       <div class="nav-right">
+        <a class="nav-cta" href="#contacto">Pedir presupuesto <span>→</span></a>
         <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
-        <a class="nav-cta" href="tel:+543838497748">Llamar ahora <span>↗</span></a>
       </div>
     </header>
 
     <main id="inicio">
+      <!-- Intro cinemática: sol → energía → agua -->
       <section class="solar-film" aria-label="Del sol al agua">
-        <div class="film-sticky"><canvas id="sequenceCanvas" class="sequence-canvas"></canvas><div class="film-shadow"></div><div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLES CALCHAQUÍES</p><h1>Del sol a<br /><em>cada gota.</em></h1><p>Deslizá.</p></div><div class="film-copy film-final"><p class="eyebrow"><i></i> DE LA ENERGÍA AL AGUA</p><h2>Así llega<br /><em>a cada campo.</em></h2><p>La energía solar se convierte en el impulso que hace brotar el agua donde hace falta.</p><a class="button" href="#contacto">Hablemos de tu proyecto <span>↓</span></a></div><div class="film-progress"><span class="active"></span><span></span><b>DESLIZÁ</b></div><button type="button" class="film-skip">Saltar intro <span>↓</span></button></div>
-      </section>
-
-      <section class="story" id="proceso">
-        <div class="section-label">NUESTRO PROPÓSITO <span>01</span></div>
-        <div class="story-heading"><p class="eyebrow dark"><i></i> ENERGÍA QUE SE TRANSFORMA</p><h2>La naturaleza nos da<br />la fuerza. Nosotros le<br /><em>damos dirección.</em></h2></div>
-        <div class="flow">
-          <article class="flow-item"><div class="flow-number">01</div><h3>Sol</h3><p>El recurso más abundante de nuestros valles.</p></article>
-          <div class="flow-arrow">→</div>
-          <article class="flow-item"><div class="flow-number">02</div><h3>Energía</h3><p>Limpia, confiable y autónoma.</p></article>
-          <div class="flow-arrow">→</div>
-          <article class="flow-item water"><div class="flow-number">03</div><h3>Agua</h3><p>Donde hace falta: producción, hogares, comunidad.</p></article>
+        <div class="film-sticky">
+          <canvas id="sequenceCanvas" class="sequence-canvas"></canvas>
+          <div class="film-shadow"></div>
+          <div class="film-copy film-intro"><p class="eyebrow"><i></i> VALLES CALCHAQUÍES</p><h1>Del sol a<br /><em>cada gota.</em></h1><p>Perforamos, bombeamos y energizamos. Deslizá para ver cómo.</p></div>
+          <div class="film-copy film-final"><p class="eyebrow"><i></i> DE LA ENERGÍA AL AGUA</p><h2>Así llega<br /><em>a cada campo.</em></h2><p>La energía solar se convierte en el impulso que hace brotar el agua donde hace falta.</p><div class="film-actions"><a class="button" href="#equipos">Ver equipos <span>↓</span></a><a class="button ghost" href="#contacto">Hablemos</a></div></div>
+          <div class="film-progress"><span class="active"></span><span></span><b>DESLIZÁ</b></div>
+          <button type="button" class="film-skip">Saltar intro <span>↓</span></button>
         </div>
       </section>
 
-      <section class="projects"><div class="projects-head"><p class="eyebrow dark"><i></i> PROYECTOS REALIZADOS</p><h2>Obras que hablan<br />por nuestro trabajo.</h2></div><div class="project-grid"><figure><img src="assets/instalacion-pozo-betun.webp" alt="Instalación solar rural en Pozo Betún" /><figcaption>Pozo Betún · Sistema solar rural</figcaption></figure><figure><img src="assets/proyecto-paneles-02.webp" alt="Arreglo de paneles solares instalado" /><figcaption>Obra terminada · Energía para bombeo</figcaption></figure></div></section>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Perforación de pozos</span><i></i><span>Bombeo solar</span><i></i><span>Energía renovable</span><i></i><span>Riego productivo</span><i></i><span>Valles Calchaquíes</span><i></i>
+          <span>Perforación de pozos</span><i></i><span>Bombeo solar</span><i></i><span>Energía renovable</span><i></i><span>Riego productivo</span><i></i><span>Valles Calchaquíes</span><i></i>
+        </div>
+      </div>
 
+      <!-- Servicios -->
+      <section class="services" id="servicios">
+        <div class="section-head reveal">
+          <p class="eyebrow dark"><i></i> LO QUE HACEMOS <span class="index">01</span></p>
+          <h2>Del subsuelo<br />al <em>panel solar.</em></h2>
+          <p>Un solo equipo para todo el ciclo del agua: encontramos el recurso, lo extraemos y lo movemos con energía limpia.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal" style="--d:0">
+            <span class="service-num">01</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4v28M18 26l6 8 6-8M14 40h20M10 44h28" /></svg>
+            <h3>Perforación de pozos</h3>
+            <p>Pozos de agua para consumo, ganadería y riego, con equipos propios montados sobre camión.</p>
+          </article>
+          <article class="service-card reveal" style="--d:1">
+            <span class="service-num">02</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30c6-8 10-8 16 0s10 8 16 0M8 40c6-8 10-8 16 0s10 8 16 0M24 4v14M17 11l7 7 7-7" /></svg>
+            <h3>Bombeo solar</h3>
+            <p>Sistemas de bombeo alimentados por paneles, autónomos y sin costo de combustible.</p>
+          </article>
+          <article class="service-card reveal" style="--d:2">
+            <span class="service-num">03</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8" /><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4" /></svg>
+            <h3>Energía para hogares</h3>
+            <p>Instalaciones solares residenciales y comerciales, diseñadas según tu consumo.</p>
+          </article>
+          <article class="service-card reveal" style="--d:3">
+            <span class="service-num">04</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c8 10 12 17 12 23a12 12 0 0 1-24 0c0-6 4-13 12-23z" /><path d="M19 31a5 5 0 0 0 5 5" /></svg>
+            <h3>Riego productivo</h3>
+            <p>Proyectos de riego a medida para que el agua llegue a cada surco y cada cultivo.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Equipos: vitrina de maquinaria -->
+      <section class="equipment" id="equipos">
+        <div class="equipment-bg" aria-hidden="true"><span class="equipment-word">PERFORACIÓN</span></div>
+        <div class="section-head light reveal">
+          <p class="eyebrow"><i></i> NUESTROS EQUIPOS <span class="index">02</span></p>
+          <h2>Maquinaria propia,<br /><em>lista para el terreno.</em></h2>
+        </div>
+
+        <div class="showcase">
+          <ol class="showcase-list" role="tablist" aria-label="Equipos">
+            <li><button role="tab" aria-selected="true" data-i="0"><b>01</b><span>Perforadora sobre camión</span></button></li>
+            <li><button role="tab" aria-selected="false" data-i="1"><b>02</b><span>Mástil de perforación</span></button></li>
+            <li><button role="tab" aria-selected="false" data-i="2"><b>03</b><span>Unidad de bombeo</span></button></li>
+            <li><button role="tab" aria-selected="false" data-i="3"><b>04</b><span>Panel de comando</span></button></li>
+            <li><button role="tab" aria-selected="false" data-i="4"><b>05</b><span>Unidad de potencia</span></button></li>
+          </ol>
+
+          <div class="showcase-stage" aria-live="polite">
+            <div class="stage-ring" aria-hidden="true"></div>
+            <div class="stage-scan" aria-hidden="true"></div>
+            <img class="stage-img" src="assets/equipo-perforadora-camion.webp" alt="Perforadora de pozos montada sobre camión de tres ejes" />
+            <div class="stage-floor" aria-hidden="true"></div>
+          </div>
+
+          <div class="showcase-info">
+            <p class="info-kicker">EQUIPO <span class="info-count">01 / 05</span></p>
+            <h3 class="info-title">Perforadora sobre camión</h3>
+            <p class="info-text">Equipo de perforación autopropulsado: mástil, bomba de lodo y motor sobre un mismo chasis para llegar a campos y parajes alejados.</p>
+            <ul class="info-tags"><li>Chasis de 3 ejes</li><li>Mástil rebatible</li><li>Gatos niveladores</li></ul>
+            <div class="info-nav">
+              <button type="button" class="info-prev" aria-label="Equipo anterior">←</button>
+              <div class="info-bar"><span></span></div>
+              <button type="button" class="info-next" aria-label="Equipo siguiente">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="equipment-rail">
+          <button class="rail-card active" data-i="0"><img src="assets/equipo-perforadora-camion.webp" alt="" loading="lazy" /><span>Perforadora</span></button>
+          <button class="rail-card" data-i="1"><img src="assets/equipo-mastil.webp" alt="" loading="lazy" /><span>Mástil</span></button>
+          <button class="rail-card" data-i="2"><img src="assets/equipo-bomba-motor.webp" alt="" loading="lazy" /><span>Bombeo</span></button>
+          <button class="rail-card" data-i="3"><img src="assets/equipo-panel-comando.webp" alt="" loading="lazy" /><span>Comando</span></button>
+          <button class="rail-card" data-i="4"><img src="assets/equipo-unidad-potencia.webp" alt="" loading="lazy" /><span>Potencia</span></button>
+        </div>
+      </section>
+
+      <!-- Proceso: la "mecha" baja a medida que se hace scroll -->
+      <section class="process" id="proceso">
+        <div class="process-copy reveal">
+          <p class="eyebrow dark"><i></i> CÓMO TRABAJAMOS <span class="index">03</span></p>
+          <h2>Bajamos hasta<br />encontrar <em>el agua.</em></h2>
+          <p>Cada pozo es un proyecto distinto. Acompañamos todo el recorrido, desde el primer estudio hasta que el agua sale con energía del sol.</p>
+          <div class="depth-readout"><span class="depth-value">0</span><small>% DEL<br />RECORRIDO</small></div>
+        </div>
+        <div class="process-track">
+          <div class="drill" aria-hidden="true">
+            <div class="drill-shaft"><div class="drill-fill"></div></div>
+            <div class="drill-bit"><svg viewBox="0 0 30 44"><path d="M3 0h24v14l-4 6v8l-8 16-8-16v-8l-4-6z" /><path d="M3 9h24M5 17h20" /></svg></div>
+            <div class="strata"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <ol class="steps">
+            <li class="step"><b>01</b><h3>Estudio del terreno</h3><p>Visitamos el lugar, analizamos la zona y definimos dónde y cómo perforar.</p></li>
+            <li class="step"><b>02</b><h3>Perforación</h3><p>Llegamos con nuestro equipo y perforamos hasta alcanzar el acuífero.</p></li>
+            <li class="step"><b>03</b><h3>Entubado y desarrollo</h3><p>Revestimos el pozo y lo limpiamos para asegurar un caudal estable y agua clara.</p></li>
+            <li class="step"><b>04</b><h3>Bombeo solar</h3><p>Instalamos bomba, paneles y control para que funcione sin combustible.</p></li>
+            <li class="step water"><b>05</b><h3>Agua donde hace falta</h3><p>Producción, animales, hogares y comunidad. Y te seguimos acompañando.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Proyectos -->
+      <section class="projects" id="proyectos">
+        <div class="section-head reveal">
+          <p class="eyebrow dark"><i></i> PROYECTOS REALIZADOS <span class="index">04</span></p>
+          <h2>Obras que hablan<br /><em>por nuestro trabajo.</em></h2>
+        </div>
+        <div class="project-grid">
+          <figure class="reveal"><div class="frame"><img src="assets/instalacion-pozo-betun.webp" alt="Instalación solar rural en Pozo Betún" loading="lazy" /></div><figcaption><span>Pozo Betún</span>Sistema solar rural</figcaption></figure>
+          <figure class="reveal" style="--d:1"><div class="frame"><img src="assets/proyecto-paneles-02.webp" alt="Arreglo de paneles solares instalado" loading="lazy" /></div><figcaption><span>Obra terminada</span>Energía para bombeo</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- Hogares -->
       <section class="homes" id="hogares">
-        <div class="homes-copy"><p class="eyebrow dark"><i></i> ENERGÍA PARA HOGARES Y LOCALES</p><h2>Que el sol también<br /><em>trabaje para vos.</em></h2><p>Instalamos sistemas solares residenciales y comerciales a medida para reducir tu dependencia de la red y acompañar el consumo de tu casa o tu negocio con energía limpia.</p><div class="home-points"><span><b>01</b> Evaluamos tu consumo</span><span><b>02</b> Diseñamos tu sistema</span><span><b>03</b> Instalamos y acompañamos</span></div><a class="home-link" href="#contacto">Pedí tu evaluación personalizada <span>↗</span></a></div>
-        <div class="homes-card photo-card" aria-label="Instalación solar residencial"><figure><img src="assets/casa-paneles-solares.webp" alt="Casa de campo con paneles solares en los Valles Calchaquíes" /><figcaption>Residencial</figcaption></figure></div>
+        <div class="homes-copy reveal">
+          <p class="eyebrow dark"><i></i> ENERGÍA PARA HOGARES Y LOCALES</p>
+          <h2>Que el sol también<br /><em>trabaje para vos.</em></h2>
+          <p>Instalamos sistemas solares residenciales y comerciales a medida para reducir tu dependencia de la red y acompañar el consumo de tu casa o tu negocio con energía limpia.</p>
+          <div class="home-points"><span><b>01</b> Evaluamos tu consumo</span><span><b>02</b> Diseñamos tu sistema</span><span><b>03</b> Instalamos y acompañamos</span></div>
+          <a class="text-link" href="#contacto">Pedí tu evaluación personalizada <span>→</span></a>
+        </div>
+        <figure class="homes-photo reveal" style="--d:1"><img src="assets/casa-paneles-solares.webp" alt="Casa de campo con paneles solares en los Valles Calchaquíes" loading="lazy" /><figcaption>Residencial</figcaption></figure>
       </section>
 
+      <!-- Nosotros -->
       <section class="statement" id="nosotros">
-        <div class="statement-copy"><p class="eyebrow"><i></i> QUIÉNES SOMOS</p><h2>Nacimos en<br />esta tierra.</h2><p>Hidro Solar Proyectos SRL es una empresa nacida en los Valles Calchaquíes. Nuestro conocimiento del territorio, sus desafíos y su gente nos permitió consolidarnos como referentes en soluciones de energía sustentable.</p><p>Creamos proyectos a medida para que el agua llegue más lejos, usando una energía que no se agota.</p><div class="signature"><span><i class="hsp-h">H</i><i class="hsp-s">S</i><i class="hsp-p">P</i></span><small>PROYECTOS CON RAÍZ LOCAL</small></div></div>
+        <div class="statement-copy reveal">
+          <p class="eyebrow"><i></i> QUIÉNES SOMOS <span class="index">05</span></p>
+          <h2>Nacimos en<br /><em>esta tierra.</em></h2>
+          <p>Hidro Solar Proyectos SRL es una empresa nacida en los Valles Calchaquíes. Nuestro conocimiento del territorio, sus desafíos y su gente nos permitió consolidarnos como referentes en soluciones de energía sustentable.</p>
+          <p>Creamos proyectos a medida para que el agua llegue más lejos, usando una energía que no se agota.</p>
+          <div class="signature"><span><i class="hsp-h">H</i><i class="hsp-s">S</i><i class="hsp-p">P</i></span><small>PROYECTOS CON RAÍZ LOCAL</small></div>
+        </div>
+        <img class="statement-machine" src="assets/equipo-mastil.webp" alt="" aria-hidden="true" loading="lazy" />
       </section>
 
+      <!-- Contacto -->
       <section class="contact" id="contacto">
-        <div><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><em>el agua llegue.</em></h2></div>
-        <div class="contact-details"><a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a><p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p><a class="whatsapp" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a></div>
+        <div class="reveal"><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><em>el agua llegue.</em></h2></div>
+        <div class="contact-details reveal" style="--d:1">
+          <a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a>
+          <p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p>
+          <a class="button wa" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a>
+        </div>
       </section>
     </main>
-    <footer><a class="brand" href="#inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /></a><span>© 2026 <b class="hsp-h">HIDRO</b> <b class="hsp-s">SOLAR</b> <b class="hsp-p">PROYECTOS</b> SRL</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
+
+    <footer>
+      <a class="brand" href="#inicio"><img class="brand-logo" src="assets/logo.jpeg" alt="Hidro Solar Proyectos SRL" /></a>
+      <span>© 2026 <b class="hsp-h">HIDRO</b> <b class="hsp-s">SOLAR</b> <b class="hsp-p">PROYECTOS</b> SRL</span>
+      <a href="#inicio">VOLVER ARRIBA ↑</a>
+    </footer>
+
+    <a class="wa-float" href="https://wa.me/543838497748" target="_blank" rel="noreferrer" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.4z"/></svg></a>
+
     <script src="smooth-scroll.bundle.js"></script>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
