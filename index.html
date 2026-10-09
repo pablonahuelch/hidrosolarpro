@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=13" />
+    <link rel="stylesheet" href="styles.css?v=14" />
   </head>
   <body>
     <header class="nav">
@@ -234,11 +234,66 @@
 
       <!-- Contacto -->
       <section class="contact" id="contacto">
-        <div class="reveal"><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><span class="grad">el agua llegue.</span></h2></div>
-        <div class="contact-details reveal" style="--d:1">
-          <a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a>
-          <p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p>
-          <a class="button wa" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a>
+        <div class="contact-intro">
+          <div class="reveal"><p class="eyebrow"><i></i> HABLEMOS DE TU PROYECTO</p><h2>Hagamos que<br /><span class="grad">el agua llegue.</span></h2></div>
+          <div class="contact-details reveal" style="--d:1">
+            <a class="phone" href="tel:+543838497748">3838 497748 <span>↗</span></a>
+            <p>Ingeniero Roque Chaile<br />Hidro Solar Proyectos SRL</p>
+            <a class="button wa" href="https://wa.me/543838497748" target="_blank" rel="noreferrer">Escribinos por WhatsApp <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="contact-box reveal" style="--d:2">
+          <form class="contact-form" id="contactForm">
+            <!-- Formulario sin backend propio: usa Web3Forms (gratis, web3forms.com). El mail llega a la casilla asociada al access_key. -->
+            <input type="hidden" name="access_key" value="7fdae54c-0532-46d7-8004-b94e50591a34" />
+            <input type="hidden" name="subject" value="Nueva consulta desde la web de Hidro Solar Proyectos" />
+            <input type="hidden" name="from_name" value="Web Hidro Solar · Formulario de contacto" />
+            <input type="checkbox" name="botcheck" class="contact-form__hp" tabindex="-1" autocomplete="off" />
+
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label for="cf-name">Nombre completo</label>
+                <input type="text" id="cf-name" name="name" required placeholder="Tu nombre y apellido" />
+              </div>
+              <div class="contact-form__field">
+                <label for="cf-email">Mail</label>
+                <input type="email" id="cf-email" name="email" required placeholder="tu@email.com" />
+              </div>
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-phone">Teléfono <small>(opcional)</small></label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="Ej: 3838 123456" />
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-message">Tu consulta</label>
+              <textarea id="cf-message" name="message" rows="5" required placeholder="Contanos qué necesitás: bombeo, riego, perforación, hogar..."></textarea>
+            </div>
+
+            <div class="contact-form__footer">
+              <button type="submit" class="button"><span class="contact-form__label">Enviar consulta</span></button>
+              <p class="contact-form__msg" id="contactMsg" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="contact-success" id="contactSuccess" role="status" aria-live="polite" hidden style="display:none">
+            <svg class="contact-success__badge" viewBox="0 0 120 120" width="84" height="84" aria-hidden="true">
+              <defs>
+                <linearGradient id="successGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2f9fe0" />
+                  <stop offset="55%" stop-color="#3aa650" />
+                  <stop offset="100%" stop-color="#f0bf38" />
+                </linearGradient>
+              </defs>
+              <circle class="contact-success__ring" cx="60" cy="60" r="52" fill="none" stroke="url(#successGrad)" stroke-width="6" stroke-linecap="round" />
+              <path class="contact-success__check" d="M35 61 L52 78 L87 40" fill="none" stroke="url(#successGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <h3 class="contact-success__title">Consulta enviada</h3>
+            <p class="contact-success__text">Gracias por escribirnos. Te respondemos por mail o WhatsApp a la brevedad.</p>
+            <button type="button" class="button ghost contact-success__reset" id="contactSuccessReset">Enviar otra consulta</button>
+          </div>
         </div>
       </section>
     </main>
@@ -252,6 +307,6 @@
     <a class="wa-float" href="https://wa.me/543838497748" target="_blank" rel="noreferrer" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.4z"/></svg></a>
 
     <script src="smooth-scroll.bundle.js"></script>
-    <script src="script.js?v=14"></script>
+    <script src="script.js?v=15"></script>
   </body>
 </html>

@@ -415,3 +415,78 @@ function onScroll() {
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 onScroll();
+
+/* =========================================================
+   FORMULARIO DE CONTACTO — envío de mail sin backend propio,
+   vía Web3Forms (https://web3forms.com). El mail llega a la
+   casilla asociada al access_key del input hidden en el HTML.
+========================================================= */
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const msgEl = document.getElementById('contactMsg');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitLabel = submitBtn.querySelector('span');
+  const successEl = document.getElementById('contactSuccess');
+  const successResetBtn = document.getElementById('contactSuccessReset');
+
+  function showSuccess() {
+    form.hidden = true;
+    form.style.display = 'none';
+    successEl.hidden = false;
+    successEl.style.display = '';
+    // Forzar layout antes de agregar la clase para que la animación se vea.
+    void successEl.offsetWidth;
+    successEl.classList.add('is-in');
+  }
+  function backToForm() {
+    successEl.classList.remove('is-in');
+    successEl.hidden = true;
+    successEl.style.display = 'none';
+    form.hidden = false;
+    form.style.display = '';
+    form.reset();
+    msgEl.textContent = '';
+    msgEl.className = 'contact-form__msg';
+  }
+  if (successResetBtn) successResetBtn.addEventListener('click', backToForm);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const accessKey = form.querySelector('[name="access_key"]').value;
+    if (!accessKey || accessKey.includes('REEMPLAZAR')) {
+      msgEl.textContent = 'Falta configurar el Access Key de Web3Forms en el HTML.';
+      msgEl.className = 'contact-form__msg is-error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalLabel = submitLabel.textContent;
+    submitLabel.textContent = 'Enviando...';
+    msgEl.textContent = '';
+    msgEl.className = 'contact-form__msg';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        showSuccess();
+      } else {
+        throw new Error(result.message || 'No se pudo enviar');
+      }
+    } catch (err) {
+      msgEl.textContent = 'Hubo un error al enviar. Probá de nuevo o escribinos por WhatsApp.';
+      msgEl.className = 'contact-form__msg is-error';
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = originalLabel;
+    }
+  });
+})();
