@@ -95,11 +95,13 @@ if (film && canvas) {
     if (introCopy) {
       const visible = progress < 0.42;
       introCopy.style.opacity = visible ? 1 : 0;
+      introCopy.style.pointerEvents = visible ? 'auto' : 'none';
       introCopy.style.transform = visible ? 'none' : 'translateY(22px)';
     }
     if (finalCopy) {
       const visible = progress > 0.58;
       finalCopy.style.opacity = visible ? 1 : 0;
+      finalCopy.style.pointerEvents = visible ? 'auto' : 'none';
       finalCopy.style.transform = visible ? 'translateY(0)' : 'translateY(22px)';
     }
     const active = progress < 0.5 ? 0 : 1;
@@ -197,6 +199,22 @@ if (film && canvas) {
   addEventListener('resize', () => { resizeCanvas(); render(); });
   skipBtn?.addEventListener('click', advance);
 
+  // Un ancla interna (Ver hogares, menú, etc.) con la intro bloqueada: se da
+  // la intro por vista y se libera el scroll antes de que Lenis navegue.
+  // Va en captura para correr antes del handler de smooth-scroll.js.
+  document.addEventListener('click', (e) => {
+    if (!locked) return;
+    const link = e.target.closest('a[href^="#"]');
+    if (!link || link.getAttribute('href') === '#inicio') return;
+    cancelAnimationFrame(rafId);
+    rafId = null;
+    playing = false;
+    progress = 1;
+    render();
+    unlockScroll();
+    skipBtn?.classList.remove('visible');
+  }, true);
+
   if (skipIntro) progress = 1;
   resizeCanvas();
   render();
@@ -252,10 +270,6 @@ const EQUIPOS = [
     alt: 'Perforadora de pozos montada sobre camión de tres ejes',
     text: 'Equipo de perforación autopropulsado: mástil, bomba de lodo y motor sobre un mismo chasis para llegar a campos y parajes alejados.',
     tags: ['Chasis de 3 ejes', 'Mástil rebatible', 'Gatos niveladores'] },
-  { img: 'assets/equipo-mastil.webp', title: 'Mástil de perforación', word: 'MÁSTIL',
-    alt: 'Mástil de perforación con cabezal rotativo y mesa de mordazas',
-    text: 'Torre con avance por cadena y cabezal rotativo hidráulico. La mesa de mordazas sujeta y enrosca la sarta de barras con seguridad.',
-    tags: ['Avance por cadena', 'Cabezal rotativo', 'Mordazas hidráulicas'] },
   { img: 'assets/equipo-bomba-motor.webp', title: 'Unidad de bombeo', word: 'BOMBEO',
     alt: 'Bomba de lodo triplex acoplada a motor diésel con radiador',
     text: 'Bomba de pistones acoplada a motor diésel: hace circular el fluido de perforación que enfría la herramienta y saca el material del pozo.',
@@ -281,7 +295,6 @@ if (stage) {
   const bar = info.querySelector('.info-bar span');
   const word = document.querySelector('.equipment-word');
   const tabs = [...document.querySelectorAll('.showcase-list button')];
-  const rail = [...document.querySelectorAll('.rail-card')];
   const CYCLE = 7000;
   let current = 0;
   let timer = null;
@@ -307,7 +320,6 @@ if (stage) {
     const e = EQUIPOS[i];
     current = i;
     tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i)));
-    rail.forEach((r, k) => r.classList.toggle('active', k === i));
 
     stage.classList.remove('switching'); void stage.offsetWidth; stage.classList.add('switching');
     stageImg.style.transform = '';
@@ -336,7 +348,6 @@ if (stage) {
   }
 
   tabs.forEach((t) => t.addEventListener('click', () => show(+t.dataset.i)));
-  rail.forEach((r) => r.addEventListener('click', () => show(+r.dataset.i)));
   info.querySelector('.info-prev').addEventListener('click', () => show(current - 1));
   info.querySelector('.info-next').addEventListener('click', () => show(current + 1));
 
@@ -404,86 +415,3 @@ function onScroll() {
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 onScroll();
-
-// ---------- Zona de operación: tocar una localidad la ubica en el mapa ----------
-const zoneFrame = document.querySelector('.zone-frame');
-if (zoneFrame) {
-  const zoom = zoneFrame.querySelector('.zone-zoom');
-  const focus = zoneFrame.querySelector('.zone-focus');
-  const townBtns = [...document.querySelectorAll('.zone-towns button')];
-  const SCALE = 2.2;
-  let activeBtn = null;
-
-  function focusOn(btn) {
-    const fx = +btn.dataset.x / 100;
-    const fy = +btn.dataset.y / 100;
-    const w = zoneFrame.clientWidth;
-    const h = zoneFrame.clientHeight;
-    // Centra el punto y evita que se vean bordes vacíos al acercar.
-    const tx = Math.min(0, Math.max(w - w * SCALE, w / 2 - fx * w * SCALE));
-    const ty = Math.min(0, Math.max(h - h * SCALE, h / 2 - fy * h * SCALE));
-    zoom.style.transform = `translate(${tx}px, ${ty}px) scale(${SCALE})`;
-    zoom.style.setProperty('--s', SCALE);
-    focus.style.setProperty('--fx', `${fx * 100}%`);
-    focus.style.setProperty('--fy', `${fy * 100}%`);
-    zoneFrame.classList.add('focused');
-  }
-
-  function resetZone() {
-    zoom.style.transform = '';
-    zoom.style.setProperty('--s', 1);
-    zoneFrame.classList.remove('focused');
-    townBtns.forEach((b) => b.setAttribute('aria-pressed', 'false'));
-    activeBtn = null;
-  }
-
-  townBtns.forEach((btn) => btn.addEventListener('click', () => {
-    if (activeBtn === btn) { resetZone(); return; }
-    townBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    activeBtn = btn;
-    focusOn(btn);
-    // En celulares las tarjetas quedan debajo del mapa: lo traemos a la vista.
-    const r = zoneFrame.getBoundingClientRect();
-    if (r.top < 60 || r.bottom > innerHeight) {
-      const y = scrollY + r.top - Math.max(70, (innerHeight - r.height) / 2);
-      if (window.lenis) window.lenis.scrollTo(y); else scrollTo({ top: y, behavior: 'smooth' });
-    }
-  }));
-  zoneFrame.querySelector('.zone-reset').addEventListener('click', resetZone);
-  addEventListener('resize', () => { if (activeBtn) focusOn(activeBtn); });
-}
-
-// ---------- Trayectoria: cifras que cuentan y línea de tiempo ----------
-const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    countObserver.unobserve(entry.target);
-    const el = entry.target;
-    const end = +el.dataset.count;
-    const suffix = el.dataset.suffix || '';
-    const t0 = performance.now();
-    const DUR = 1600;
-    (function tick(now) {
-      const t = Math.min(1, (now - t0) / DUR);
-      el.innerHTML = Math.round(end * (1 - Math.pow(1 - t, 3))) + (suffix ? `<small>${suffix}</small>` : '');
-      if (t < 1) requestAnimationFrame(tick);
-    })(t0);
-  });
-}, { threshold: 0.6 });
-document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
-
-const yearsEl = document.querySelector('.years');
-if (yearsEl) {
-  const bar = document.querySelector('.timeline-bar');
-  const updateBar = () => {
-    const max = yearsEl.scrollWidth - yearsEl.clientWidth;
-    const p = max > 0 ? (yearsEl.scrollLeft + yearsEl.clientWidth) / yearsEl.scrollWidth : 1;
-    bar.style.setProperty('--tp', p.toFixed(3));
-  };
-  const step = () => yearsEl.querySelector('.year').offsetWidth + 16;
-  document.querySelector('.tl-prev').addEventListener('click', () => yearsEl.scrollBy({ left: -step(), behavior: 'smooth' }));
-  document.querySelector('.tl-next').addEventListener('click', () => yearsEl.scrollBy({ left: step(), behavior: 'smooth' }));
-  yearsEl.addEventListener('scroll', updateBar, { passive: true });
-  addEventListener('resize', updateBar);
-  updateBar();
-}
